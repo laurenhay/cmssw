@@ -9,6 +9,8 @@
 <use   name="RecoEgamma/EgammaTools"/>
 <use   name="PhysicsTools/JetMCUtils"/>
 <use   name="DataFormats/NanoAOD"/>
+<use name="DataFormats/VertexReco"/>
+<use name="RecoBTag/FeatureTools"/>
 <use   name="roothistmatrix"/>
 <use   name="RecoVertex/VertexTools"/>
 <use   name="RecoVertex/VertexPrimitives"/>

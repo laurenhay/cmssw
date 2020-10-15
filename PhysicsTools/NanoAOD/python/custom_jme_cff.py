@@ -6,6 +6,9 @@ from Configuration.Eras.Modifier_run2_jme_2017_cff import run2_jme_2017
 from PhysicsTools.NanoAOD.common_cff import Var, P4Vars
 from PhysicsTools.NanoAOD.jets_cff import jetTable
 
+from PhysicsTools.NanoAOD.addPFCands_cff import addPFCands
+from PhysicsTools.NanoAOD.addBTV_cff import addBTV
+
 from PhysicsTools.PatAlgos.tools.jetCollectionTools import GenJetAdder, RecoJetAdder
 
 import copy
@@ -482,4 +485,31 @@ def PrepJMECustomNanoAOD_MC(process):
 
 def PrepJMECustomNanoAOD_Data(process):
   PrepJMECustomNanoAOD(process,runOnMC=False)
-  
+
+#
+# Add Fat Jet PFCands and BTV info                                                                                                                                                                         
+#
+def PrepJMECustomAK8PFNanoAOD_MC(process):
+  PrepJMECustomNanoAOD(process, runOnMC=True)
+  addPFCands(process, runOnMC = True, onlyAK8 = True)
+  addBTV(process, runOnMC = True, onlyAK8 = True)
+  return process
+
+def PrepJMECustomAK8PFNanoAOD_Data(process):
+  PrepJMECustomNanoAOD(process, runOnMC=False)
+  addPFCands(process, runOnMC = False, onlyAK8 = True)
+  addBTV(process, runOnMC = False, onlyAK8 = True)
+  return process
+#
+# Add All PFCands and BTV info                                                                                                                                                                             # 
+def PrepJMECustomPFNanoAOD_MC(process):
+  PrepJMECustomNanoAOD(process, runOnMC=True)
+  addPFCands(process, runOnMC = True, allPF = True)
+  addBTV(process, runOnMC = True)
+  return process
+
+def PrepJMECustomPFNanoAOD_Data(process):
+  PrepJMECustomNanoAOD(process, runOnMC=False)
+  addPFCands(process, runOnMC = False, allPF = True)
+  addBTV(process, runOnMC = False)
+  return process
