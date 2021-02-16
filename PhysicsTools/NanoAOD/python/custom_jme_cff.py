@@ -11,6 +11,9 @@ from PhysicsTools.NanoAOD.common_cff import Var, P4Vars
 from PhysicsTools.NanoAOD.jets_cff   import jetTable, jetCorrFactorsNano, updatedJets, finalJets, qgtagger, hfJetShowerShapeforNanoAOD
 from PhysicsTools.NanoAOD.jets_cff   import genJetTable, genJetFlavourAssociation, genJetFlavourTable
 
+from PhysicsTools.NanoAOD.addPFCands_cff import addPFCands
+from PhysicsTools.NanoAOD.addBTV_cff import addBTV
+
 from PhysicsTools.PatAlgos.tools.jetCollectionTools import GenJetAdder, RecoJetAdder
 from PhysicsTools.PatAlgos.tools.jetTools import supportedJetAlgos
 from PhysicsTools.PatAlgos.tools.jetTools import updateJetCollection
@@ -1092,4 +1095,17 @@ def PrepJMECustomNanoAOD_MC(process):
 
 def PrepJMECustomNanoAOD_Data(process):
   PrepJMECustomNanoAOD(process,runOnMC=False)
+  return process
+
+#### Add AK8 PFCands and BTV info                                                                                                                                                                           
+def PrepJMECustomAK8PFNanoAOD_MC(process):
+  PrepJMECustomNanoAOD(process, runOnMC=True)
+  addPFCands(process, runOnMC = True, onlyAK8 = True)
+  addBTV(process, runOnMC = True, onlyAK8 = True)
+  return process
+
+def PrepJMECustomAK8PFNanoAOD_Data(process):
+  PrepJMECustomNanoAOD(process, runOnMC=False)
+  addPFCands(process, runOnMC = False, onlyAK8 = True)
+  addBTV(process, runOnMC = False, onlyAK8 = True)
   return process

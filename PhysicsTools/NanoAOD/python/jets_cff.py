@@ -1,8 +1,9 @@
 import FWCore.ParameterSet.Config as cms
 
 from PhysicsTools.NanoAOD.nano_eras_cff import *
-from  PhysicsTools.NanoAOD.common_cff import *
+from PhysicsTools.NanoAOD.common_cff import *
 from RecoJets.JetProducers.ak4PFJetsBetaStar_cfi import *
+
 
 
 ##################### User floats producers, selectors ##########################

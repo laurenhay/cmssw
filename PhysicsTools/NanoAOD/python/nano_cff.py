@@ -318,6 +318,8 @@ def nanoAOD_runMETfixEE2017(process,isData):
                                postfix = "FixEE2017")
     process.nanoSequenceCommon.insert(process.nanoSequenceCommon.index(jetSequence),process.fullPatMetSequenceFixEE2017)
 
+from PhysicsTools.NanoAOD.addPFCands_cff import addPFCands
+from PhysicsTools.NanoAOD.addBTV import add_BTV
 def nanoAOD_customizeCommon(process):
     makePuppiesFromMiniAOD(process,True)
     process.puppiNoLep.useExistingWeights = True
@@ -374,6 +376,8 @@ def nanoAOD_customizeCommon(process):
 def nanoAOD_customizeData(process):
     process = nanoAOD_customizeCommon(process)
     process = nanoAOD_recalibrateMETs(process,isData=True)
+    process = addPFCands(process, runOnMC = False, onlyAK8 = True)
+    process = add_BTV(process, runOnMC = False, onlyAK8 = True)
     for modifier in run2_nanoAOD_94XMiniAODv1, run2_nanoAOD_94XMiniAODv2:
         modifier.toModify(process, lambda p: nanoAOD_runMETfixEE2017(p,isData=True))
     return process
@@ -381,6 +385,8 @@ def nanoAOD_customizeData(process):
 def nanoAOD_customizeMC(process):
     process = nanoAOD_customizeCommon(process)
     process = nanoAOD_recalibrateMETs(process,isData=False)
+    process = addPFCands(process, runOnMC = True, onlyAK8 = True)
+    process = add_BTV(process, runOnMC = True, onlyAK8 = True)
     for modifier in run2_nanoAOD_94XMiniAODv1, run2_nanoAOD_94XMiniAODv2:
         modifier.toModify(process, lambda p: nanoAOD_runMETfixEE2017(p,isData=False))
     return process
