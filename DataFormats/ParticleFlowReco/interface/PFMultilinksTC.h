@@ -10,7 +10,8 @@ namespace reco {
   /// \brief Abstract This class is used by the KDTree Track / Ecal Cluster
   /// linker to store all found links.
   ///
-  typedef std::vector<std::pair<double, double> > PFMultilinksType;
+
+  typedef std::tuple<edm::Ref<PFCluster>, double, double > PFMultilinksType;
   class PFMultiLinksTC {
   public:
     bool isValid;
