@@ -632,6 +632,11 @@
   <class name="edm::Association<std::vector<pat::PackedGenParticle> >" />
   <class name="edm::Wrapper<edm::Association<std::vector<pat::PackedGenParticle> > >"/>
 
+  <class name="edm::RefToBaseVector<pat::Jet>"/>
+  <class name="edm::Wrapper<edm::RefToBaseVector<pat::Jet> >"/>
+  <class name="edm::reftobase::BaseVectorHolder<pat::Jet>"/>
+  <class name="edm::reftobase::Holder<reco::Jet, pat::JetRef>" />
+
   <!--- vectors of Ptrs -->
   <class name="std::vector<edm::Ptr<pat::Jet> >" />
   <class name="std::vector< std::vector<edm::Ptr<pat::Jet> > >" />

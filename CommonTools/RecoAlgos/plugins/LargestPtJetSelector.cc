@@ -21,7 +21,7 @@
 typedef ObjectSelector<SortCollectionSelector<reco::PFJetCollection, GreaterByPt<reco::PFJet> > > LargestPtPFJetSelector;
 typedef ObjectSelector<SortCollectionSelector<reco::GenJetCollection, GreaterByPt<reco::GenJet> > > LargestPtGenJetSelector;
 typedef ObjectSelector<SortCollectionSelector<reco::CaloJetCollection, GreaterByPt<reco::CaloJet> > > LargestPtCaloJetSelector;
-typedef ObjectSelector<SortCollectionSelector<std::vector<pat::Jet>, GreaterByPt<pat::Jet> > > LargestPtPatJetSelector;
+typedef ObjectSelector<SortCollectionSelector<edm::View<pat::Jet>, GreaterByPt<pat::Jet> > > LargestPtPatJetSelector;
 
 
 
