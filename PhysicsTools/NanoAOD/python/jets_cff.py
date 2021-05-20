@@ -627,7 +627,7 @@ genJetFlavourTable = cms.EDProducer("GenJetFlavourTableProducer",
 
 genJetAK8Table = cms.EDProducer("SimpleCandidateFlatTableProducer",
     src = cms.InputTag("slimmedGenJetsAK8"),
-    cut = cms.string("pt > 100."),
+    cut = cms.string("pt > 70."),
     name = cms.string("GenJetAK8"),
     doc  = cms.string("slimmedGenJetsAK8, i.e. ak8 Jets made with visible genparticles"),
     singleton = cms.bool(False), # the number of entries is variable
