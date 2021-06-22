@@ -250,7 +250,7 @@ void KDTreeLinkerTrackEcal::updatePFBlockEltWithLinks() {
       double tracketa = atECAL.positionREP().eta();
       double trackphi = atECAL.positionREP().phi();
 
-      multitracks.linkedClusters.push_back(trackref);
+      multitracks.linkedClusters.push_back(clusterref);
 
       // We set the multilinks flag of the track (for links to ECAL) to true. It will allow us to
       // use it in an optimized way in prefilter

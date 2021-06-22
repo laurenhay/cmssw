@@ -59,24 +59,23 @@ double TrackAndECALLinker::testLink(const reco::PFBlockElement* elem1, const rec
   // Glowinski & Gouzevitch
   if (useKDTree_ && ecalelem->isMultilinksValide(tkelem->type())) {  //KDTree Algo
     const reco::PFMultilinksType& multilinks = ecalelem->getMultilinks(tkelem->type());
-    const double tracketa = tkAtECAL.positionREP().Eta();
-    const double trackphi = tkAtECAL.positionREP().Phi();
-
+    // const double tracketa = tkAtECAL.positionREP().Eta();
+    // const double trackphi = tkAtECAL.positionREP().Phi();
     // Check if the link Track/Ecal exist
     reco::PFMultilinksType::const_iterator mlit = multilinks.begin();
     for (; mlit != multilinks.end(); ++mlit)
-      if (mlit == clusterref)
+      if (mlit->clusterRef == clusterref)
         break;
 
     // If the link exist, we fill dist and linktest.
-    if (mlit != multilinks.end()) {
-      dist = LinkByRecHit::computeDist(ecalreppos.Eta(), ecalreppos.Phi(), tracketa, trackphi);
-    }
+    // if (mlit != multilinks.end()) {
+    //  dist = LinkByRecHit::computeDist(ecalreppos.Eta(), ecalreppos.Phi(), tracketa, trackphi);
+    // }
 
-  } else {  // Old algorithm
-    if (tkAtECAL.isValid())
-      dist = LinkByRecHit::testTrackAndClusterByRecHit(*trackref, *clusterref, false, debug_);
-  }
+  }// else {  // Old algorithm
+   // if (tkAtECAL.isValid())
+   //   dist = LinkByRecHit::testTrackAndClusterByRecHit(*trackref, *clusterref, false, debug_);
+  // }
 
   if (debug_) {
     if (dist > 0.) {

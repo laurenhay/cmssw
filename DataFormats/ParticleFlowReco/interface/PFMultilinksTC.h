@@ -4,6 +4,7 @@
 // Done by Glowinski & Gouzevitch
 
 #include <vector>
+#include "DataFormats/Common/interface/Ref.h"
 #include "DataFormats/Common/interface/RefVector.h"
 
 namespace reco {
@@ -11,12 +12,13 @@ namespace reco {
   /// \brief Abstract This class is used by the KDTree Track / Ecal Cluster
   /// linker to store all found links.
   ///
-  class PFMultiLink;
-
+  struct PFMultilink {
+    PFMultilink ( const reco::PFRecTrackRef & trackref, const reco::PFClusterRef & clusterref ) : trackRef(trackref), clusterRef(clusterref) {}
+    reco::PFRecTrackRef trackRef;
+    reco::PFClusterRef clusterRef;
+  };
   /// collection of PFSuperCluster objects
-  typedef edm::RefVector<std::vector<PFMultiLink>> PFMultilinksType;
-
-  
+  typedef edm::RefVector<std::vector<PFMultilink>> PFMultilinksType;
   class PFMultiLinksTC {
   public:
     bool isValid;
